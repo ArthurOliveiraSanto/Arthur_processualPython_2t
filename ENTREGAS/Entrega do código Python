@@ -1,0 +1,88 @@
+print("Config Special Family")
+# Armazena os dados da configuraçao do usuario.
+perfil = {
+    "Nome_de_usuario": "",
+    "Nome_de_perfil": "",
+    "Email": "",
+    "Telefone": "",
+    "Senha": "",
+    "Tipo_de_perfil": "",
+    "Descricao": ""
+}
+# Definir variavel e da valor a ela.
+def exibir_perfil():
+    print("\n--- SEU PERFIL ---")
+    for chave, valor in perfil.items():
+        print(f"{chave.replace('_', ' ').title()}: {valor}")
+    print("------------------")
+# Loop
+def editar_perfil():
+    while True:
+        print("\nOpções de edição:")
+        print("1. Nome de usuário")
+        print("2. Nome de perfil")
+        print("3. Email")
+        print("4. Telefone")
+        print("5. Senha")
+        print("6. Tipo de perfil")
+        print("7. Descrição")
+        print("8. Voltar ao menu principal")
+       
+        opcao = input("Escolha o número do campo que deseja editar: ")
+       
+        if opcao == "1":
+            perfil["Nome_de_usuario"] = input("Digite seu novo nome de usuário: ")
+        elif opcao == "2":
+            perfil["Nome_de_perfil"] = input("Digite seu novo nome de perfil: ")
+        elif opcao == "3":
+            perfil["Email"] = input("Digite seu novo Email: ")
+        elif opcao == "4":
+            perfil["Telefone"] = input("Digite seu novo telefone: ")
+        elif opcao == "5":
+            perfil["Senha"] = input("Digite sua nova senha: ")
+        elif opcao == "6":
+            perfil["Tipo_de_perfil"] = input("Escolha o tipo de perfil (Responsável | Apoiador): ").lower()
+            while perfil["Tipo_de_perfil"] not in ["responsavel", "apoiador"]:
+                print("Opção inválida. Por favor, digite 'Responsável' ou 'Apoiador'.")
+                perfil["Tipo_de_perfil"] = input("Escolha o tipo de perfil (Responsável | Apoiador): ").lower() #Converte a entrada
+        elif opcao == "7":
+            perfil["Descricao"] = input("Digite sua nova descrição: ")
+        elif opcao == "8":
+            break # Fecha loop
+        else:
+            print("Opção inválida. Por favor, escolha um número de 1 a 8.")
+       
+        exibir_perfil()
+
+
+perfil["Nome_de_usuario"] = input("Digite seu nome de usuário: ")
+perfil["Nome_de_perfil"] = input("Digite seu nome de perfil: ")
+perfil["Email"] = input("Digite seu Email: ")
+perfil["Telefone"] = input("Digite seu telefone: ")
+perfil["Senha"] = input("Digite sua senha: ")
+
+perfil["Tipo_de_perfil"] = input("Escolha o tipo de perfil (Responsável | Apoiador): ").lower()
+while perfil["Tipo_de_perfil"] not in ["responsavel", "apoiador"]:
+    print("Opção inválida. Por favor, digite 'Responsável' ou 'Apoiador'.")
+    perfil["Tipo_de_perfil"] = input("Escolha o tipo de perfil (Responsável | Apoiador): ").lower()
+
+perfil["Descricao"] = input("Descrição: ")
+
+#
+while True:
+    print("\nMENU PRINCIPAL")
+    print("1. Visualizar perfil")
+    print("2. Editar perfil")
+    print("3. Sair")
+   
+    opcao = input("Escolha uma opção: ")
+   
+    if opcao == "1":
+        exibir_perfil()
+    elif opcao == "2":
+        editar_perfil()
+    elif opcao == "3":
+        print("\nObrigado por usar o Special Family. Até mais!")
+        break
+    else:
+        print("Opção inválida. Por favor, escolha 1, 2 ou 3.")
